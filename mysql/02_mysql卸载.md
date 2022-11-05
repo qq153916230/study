@@ -11,7 +11,7 @@ mysql安装的3个关键位置：
 框，可以在“服务”列表找到“MySQL8.0”的服务，如果现在“正在运行”状态，可以右键单击服务，选择“停
 止”选项停止MySQL8.0的服务，如图所示。
 
-![](D:\mine\study\mysql\pic\1.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/1.png)
 
 # 步骤2：软件的卸载
 
@@ -19,7 +19,7 @@ mysql安装的3个关键位置：
 
 卸载MySQL8.0的程序可以和其他桌面应用程序一样直接在“控制面板”选择“卸载程序”，并在程序列表中找到MySQL8.0服务器程序，直接双击卸载即可，如图所示。这种方式删除，数据目录下的数据不会跟着删除。
 
-![](D:\mine\study\mysql\pic\2.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/2.png)
 
 ## 方式2：通过360或电脑管家等软件卸载
 
@@ -31,23 +31,23 @@ mysql安装的3个关键位置：
 ①再次双击下载的mysql-installer-community-8.0.26.0.msi文件，打开安装向导。安装向导会自动检测已安装的MySQL服务器程序。
 ②选择要卸载的MySQL服务器程序，单击“Remove”（移除），即可进行卸载。
 
-![](D:\mine\study\mysql\pic\3.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/3.png)
 
 ③单击“Next”（下一步）按钮，确认卸载。
 
-![](D:\mine\study\mysql\pic\4.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/4.png)
 
 ④弹出是否同时移除数据目录选择窗口。如果想要同时删除MySQL服务器中的数据，则勾选“Removethe datadirectory”，如图所示。
 
-![](D:\mine\study\mysql\pic\5.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/5.png)
 
 ⑤执行卸载。单击“Execute”（执行）按钮进行卸载。
 
-![](D:\mine\study\mysql\pic\6.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/6.png)
 
 ⑥完成卸载。单击“Finish”（完成）按钮即可。如果想要同时卸载MySQL8.0的安装向导程序，勾选“Yes，UninstallMySQLInstaller”即可，如图所示。
 
-![](D:\mine\study\mysql\pic\7.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/7.png)
 
 # 步骤3：残余文件的清理
 
@@ -79,6 +79,6 @@ HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MySQL服务删除
 找到path环境变量，将其中关于mysql的环境变量删除，切记不要全部删除。
 例如：删除 D:\develop_tools\mysql\MySQLServer8.0.26\bin; 这个部分
 
-![](D:\mine\study\mysql\pic\8.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/8.png)
 
 # 最后重启电脑
