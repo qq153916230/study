@@ -38,7 +38,7 @@ WHERE age > (
 
 #  二、子查询的基本使用
 
-- 子查询的基本语法结构：![](D:\mine\study\mysql\pic\45.png)
+- 子查询的基本语法结构：![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/45.png)
 - 子查询（内查询）在主查询之前一次执行完成。
 - 子查询的结果被主查询（外查询）使用 。
 
@@ -169,7 +169,7 @@ HAVING AVG(age) <= ALL (
 
 如果子查询的执行依赖于外部查询，通常情况下都是因为子查询中的表用到了外部的表，并进行了条件关联，因此每执行一次外部查询，子查询都要重新计算一次，这样的子查询就称之为 **关联子查询** 。
 
-![](D:\mine\study\mysql\pic\46.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/46.png)
 
 说明：**子查询中使用主查询中的列**
 

@@ -1,6 +1,6 @@
 # 基本使用
 
-![](D:\mine\study\mysql\pic\42.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/42.png)
 
 **过滤分组：HAVING子句**
 
@@ -9,7 +9,7 @@
 3. 满足HAVING 子句中条件的分组将被显示。
 4. HAVING 不能单独使用，必须要跟 GROUP BY 一起使用
 
-![](D:\mine\study\mysql\pic\43.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/43.png)
 
 ```mysql
 SELECT department_id, MAX(salary)

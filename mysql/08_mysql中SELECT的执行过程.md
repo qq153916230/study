@@ -50,7 +50,7 @@ SELECT ... FROM ... WHERE ... GROUP BY ... HAVING ... ORDER BY ... LIMIT...
 FROM -> WHERE -> GROUP BY -> HAVING -> SELECT 的字段 -> DISTINCT -> ORDER BY -> LIMIT
 ```
 
-![](D:\mine\study\mysql\pic\44.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/44.png)
 
 比如你写了一个 SQL 语句，那么它的关键字顺序和执行顺序是下面这样的：
 
