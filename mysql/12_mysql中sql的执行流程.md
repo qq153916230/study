@@ -3,7 +3,7 @@
 
 # 一、SQL执行流程图
 
-![](D:\mine\study\mysql\pic\47.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/47.png)
 
 - **查询缓存**
 
@@ -58,4 +58,4 @@ SHOW PROFILE FOR QUERY Query_ID;
 
 ## 3. PROFILE的详细语法：
 
-![](D:\mine\study\mysql\pic\48.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/48.png)
