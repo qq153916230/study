@@ -1,5 +1,6 @@
-[康师傅]: https://www.bilibili.com/video/BV1iq4y1u7vj?p=109&amp;vd_source=4dc722ef7fff30a2eccddfaf3b268de4
-[爱编程的大李子]: https://blog.csdn.net/LXYDSF/article/details/125755327
+> 参考来源：
+> 康师傅：https://www.bilibili.com/video/BV1iq4y1u7vj?p=109
+> 爱编程的大李子：https://blog.csdn.net/LXYDSF/article/details/125755327
 
 # 一、Connectors
 
