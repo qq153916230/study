@@ -4,10 +4,6 @@
 >
 > 爱编程的大李子：https://blog.csdn.net/LXYDSF/article/details/125873790
 
-# 
-
-
-
 ROW_FORMAT = Compact;
 
 -  record_type：记录头信息的一项属性，表示记录的类型， 0 表示普通记录、 2 表示最小记 录、 3 表示最大记录、 1 表示目录项的记录，暂时还没用过，下面讲。
