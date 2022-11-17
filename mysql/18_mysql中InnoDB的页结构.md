@@ -14,7 +14,7 @@
 
 在数据库中，还存在着区(Extent)、段(Segment)和表空间(Tablespace)的概念。行、页、区、段、表空间的关系如下图所示:
 
-![](D:\mine\study\mysql\pic\49.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/49.png)
 
 - 区(Extent)是比页大一级的存储结构，在InnoDB存储引擎中，一个区会分配**64个连续的页**。因为InnoDB中的页大小默认是16KB，所以一个区的大小是64*16KB= 1MB。
 - 段(Segment)由一个或多个区组成，区在文件系统是一个连续分配的空间(在InnoDB中是连续的64个页)不过在段中不要求区与区之间是相邻的。**段是数据库中的分配单位，不同类型的数据库对象以不同的段形式存在**。当我们创建数据表、索引的时候，就会相应创建对应的段，比如创建一张表时会创建一个表段，创建一个索引时会创建一个索引段。
@@ -28,13 +28,13 @@
 
 页结构的示意图如下所示:
 
-![](D:\mine\study\mysql\pic\50.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/50.png)
 
 ### 2.1 File Header（文件头部）
 
 **作用：**描述各种页的通用信息。（比如页的编号、其上一页、下一页是谁等）
 **构成：**
-![](D:\mine\study\mysql\pic\51.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/51.png)
 
 - **FIL_PAGE_OFFSET（4字节）**
   每一个页都有一个单独的页号，就跟你的身份证号码一样，InnoDB通过页号可以唯一定位一个页。
@@ -44,7 +44,7 @@
   这个代表当前页的类型，如下
   
 
-  ![](D:\mine\study\mysql\pic\52.png)
+  ![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/52.png)
 
   
 
@@ -86,11 +86,11 @@ User Records中的这些记录按照指定的行格式一条一条摆在User Rec
 
 InnoDB规定的最小记录与最大记录这两条记录的构造十分简单，都是由5字节大小的记录头信息和8字节大小的一个固定的部分组成的，如图所示：
 
-![](D:\mine\study\mysql\pic\53.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/53.png)
 
 这两条记录不是我们自己定义的记录，所以它们并不存放在页的User Records部分，他们被单独放在一个称为Infimum + Supremum的部分，如图所示：
 
-![](D:\mine\study\mysql\pic\54.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/54.png)
 
 ### 2.6 Page Directory（页目录）
 
@@ -115,7 +115,7 @@ InnoDB规定的最小记录与最大记录这两条记录的构造十分简单�
 
 为了能得到一个数据页中存储的记录的状态信息，比如本页中已经存储了多少条记录，第一条记录的地址是什么，页目录中存储了多少个槽等等，特意在页中定义了一个叫Page Header的部分，这个部分占用固定的56个字节，专门存储各种状态信息。
 
-![](D:\mine\study\mysql\pic\55.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/55.png)
 
 
 - **PAGE_DIRECTION**
