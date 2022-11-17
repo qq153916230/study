@@ -19,7 +19,7 @@ ALTER TABLE 表名 ROW_FORMAT=行格式名称 # 修改
 
 在MySQL 5.1版本中，默认设置为Compact行格式。一条完整的记录其实可以被分为记录的额外信息和记录的真实数据两大部分
 
-![](D:\mine\study\mysql\pic\56.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/56.png)
 
 - **变长字段长度列表**
 
@@ -40,7 +40,7 @@ ALTER TABLE 表名 ROW_FORMAT=行格式名称 # 修改
 
 - **记录头信息**（5字节）
 
-  ![](D:\mine\study\mysql\pic\57.png)
+  ![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/57.png)
 
   - delete_mask
 
@@ -97,7 +97,7 @@ ALTER TABLE 表名 ROW_FORMAT=行格式名称 # 修改
 
 查看Compact行记录的内部结构可以在Windows操作系统下，通过应用NodePad++打开表空间文件xx.ibd这个二进制文件查看
 
-![](D:\mine\study\mysql\pic\58.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/58.png)
 
 ## 2. Dynamic和Compressed行格式
 
