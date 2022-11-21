@@ -26,7 +26,7 @@ MySQL 中有专门负责优化 SELECT 语句的优化器模块，主要功能：
 - 5.7版本：https://dev.mysql.com/doc/refman/5.7/en/explain-output.html
 - 8.0版本：https://dev.mysql.com/doc/refman/8.0/en/explain-output.html
 
-![](D:\mine\study\mysql\pic\63.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/63.png)
 
 ## 3. 版本情况
 
@@ -53,7 +53,7 @@ DESCRIBE SELECT select_options
 EXPLAIN SELECT 1;
 ```
 
-![](D:\mine\study\mysql\pic\64.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/64.png)
 
 输出的上述信息就是所谓的**执行计划**。在这个执行计划的辅助下，我们需要知道应该怎样改进自己的查询语句以使查询执行起来更高效。其实除了以 **SELECT** 开头的查询语句，其余的 **DELETE**、 **INSERT**、**REPLACE** 以及 **UPDATE** 语句等都可以加上 **EXPLAIN** ，用来查看这些语句的执行计划，只是平时我们对 **SELECT** 语句更感兴趣。
 
@@ -88,7 +88,7 @@ EXPLAIN SELECT * FROM s1 INNER JOIN s2;
 
 如下图，**一张表对应一个记录**。
 
-![](D:\mine\study\mysql\pic\65.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/65.png)
 
 
 
@@ -98,7 +98,7 @@ EXPLAIN SELECT * FROM s1 INNER JOIN s2;
 EXPLAIN SELECT * FROM s1 UNION SELECT * FROM s2;
 ```
 
-![](D:\mine\study\mysql\pic\66.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/66.png)
 
 这是因为 Union 是取表的并集，需要建临时表进行去重，因此会有三条记录。可以看到第三条记录的 **Extra** 就标识了它是一张临时表哦。**临时表 id 是 Null**。
 
@@ -114,7 +114,7 @@ EXPLAIN SELECT * FROM s1 UNION SELECT * FROM s2;
 EXPLAIN SELECT * FROM s1 WHERE key1 IN (SELECT key2 FROM s2 WHERE common_field = 'a');
 ```
 
-![](D:\mine\study\mysql\pic\67.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/67.png)
 
 两个记录的 id 都是 1 
 
@@ -134,7 +134,7 @@ EXPLAIN SELECT * FROM s1 WHERE key1 IN (SELECT key2 FROM s2 WHERE common_field =
 
 MysSQL 为每一个 SELECT 关键字代表的小查询都定义了一个称之为 select_type 的属性，意思是我们只要知道了某个小查询的 select_type 属性，就知道了这个小查询在整个大查询中扮演了一个什么角色，我们看一下 select_type 都能取哪些值，请看官方文档：
 
-![](D:\mine\study\mysql\pic\68.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/68.png)
 
 
 
@@ -142,11 +142,11 @@ MysSQL 为每一个 SELECT 关键字代表的小查询都定义了一个称之�
 
   查询语句中不包含 **UNION** 或者 **子查询** 的查询都算作是 **SIMPLE** 类型，join 连接查询也是 SIMPLE 类型
 
-  ![](D:\mine\study\mysql\pic\69.png)
+  ![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/69.png)
 
 - **Union 联合查询**。其左边的查询是 **Primary**，右边的查询类型是 **Union**，去重的临时表查询类型是： **Union Result**
 
-  ![](D:\mine\study\mysql\pic\70.png)
+  ![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/70.png)
 
   - 对于包含 **UNION** 或者 **UNION ALL** 的大查询来说，它是由几个小查询组成的，其中除了最左边的那个查询的 **select_type** 值就是 **PRIMARY**，其余的小查询的 **select_type** 值就是 **UNION**
   - **MySQL** 选择使用临时表来完成 **UNION** 查询的去重工作，针对该临时表的查询的 **select_type** 就是 **UNION RESULT**
@@ -158,13 +158,13 @@ MysSQL 为每一个 SELECT 关键字代表的小查询都定义了一个称之�
 
   该子查询的第一个 **SELECT** 关键字代表的那个查询的 **select_type** 就是 **SUBQUERY**。也就是外层查询是 **Primary**，内层查询是  **SUBQUERY**
 
-  ![](D:\mine\study\mysql\pic\71.png)
+  ![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/71.png)
 
   如果子查询不能被转换为多表连接的形式，并且该子查询是相关子查询。
 
   比如下面的查询在内部子查询使用了外部的表。则该子查询的第一个 **SELECT** 关键字代表的那个查询的 **select_type** 就是**DEPENDENT SUBQUERY**。 外层查询是 **Primary**，内层查询是 **DEPENDENT SUBQUERY**
 
-  ![](D:\mine\study\mysql\pic\72.png)
+  ![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/72.png)
 
   需要注意的是 **DEPENDENT SUBQUERY** 的查询语句可能会被执行多次，因为内层查询依赖于外层的查询，因此可能会是外层传一个值，内层就执行一次的模式。
 
@@ -172,7 +172,7 @@ MysSQL 为每一个 SELECT 关键字代表的小查询都定义了一个称之�
 
   在包含 **Union** 或者 **Union All** 的子查询 sql 中，如果各个小查询都依赖于外查询，那么除了最左边的小查询外，各个小查询的类型都是 **DEPENDENT UNION**
 
-  ![](D:\mine\study\mysql\pic\73.png)
+  ![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/73.png)
 
   外查询是 **Primary**，最左边的子查询是 **DEPENDENT SUBQUERY**，后面的子查询是 **DEPENDENT UNION**，临时去重表的类型是 **Union Result**。这里大家可能要困惑，第一个子查询中也没有看到依赖 s1 啊。这其实也是优化器会在执行时进行优化，将 **IN** 改成 **Exist**，并且把外部的表移到内部去。
 
@@ -180,13 +180,13 @@ MysSQL 为每一个 SELECT 关键字代表的小查询都定义了一个称之�
 
   对于包含 **派生表** 的查询，该派生表对应的子查询的 **select_type** 就是 **DERIVED**
 
-  ![](D:\mine\study\mysql\pic\74.png)
+  ![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/74.png)
 
 - **子查询的物化后与外层连接查询**
 
   当优化器在执行子查询时选择把子查询优化成为一张**物化表**，与外层查询进行连接查询时。
 
-  ![](D:\mine\study\mysql\pic\75.png)
+  ![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/75.png)
 
   从下往上看，子查询的查询类型是 **MATERIALIZED**；物化过程是基于 id 为 2 的查询结果表进行的，其 table 是 **subquery 2**，查询类型是 **SIMPLE**，而外层也相当于是与固定的直接值进行查询，其类型也是 **SIMPLE**
 
@@ -212,7 +212,7 @@ CREATE TABLE user_partitions (
 
 查询 id 大于200（200>100，p1分区）的记录，查看执行计划，partitions 是 p1，符合我们的分区规则
 
-![](D:\mine\study\mysql\pic\76.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/76.png)
 
 ### ⑤ type ☆
 
@@ -270,7 +270,7 @@ CREATE TABLE user_partitions (
 
   当进行单表访问时，如果**多个查询字段分别建立了单列索引**，使用 **OR** 连接，其访问类型是 **index_merge**。同时还可以看到 key 这一字段，是使用了**多个索引**
 
-  ![](D:\mine\study\mysql\pic\77.png)
+  ![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/77.png)
 
   如果使用 **AND** 连接，则引用类型为 **ref**，这是因为用 AND 连接两个查询时，实际上只使用了 key1 的索引
 
@@ -373,7 +373,7 @@ EXPLAIN SELECT * FROM s1 INNER JOIN s2 ON s1.id = s2.id;
 
   结果是 10，表示有 347 条记录满足 key1 > ‘z’ 的条件，这 347 条记录的 10% 满足 common_field = ‘a’ 条件。
 
-  ![](D:\mine\study\mysql\pic\78.png)
+  ![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/78.png)
 
 - 实际上，对于**单表查询**，这个字段没有太大的意义，我们更加**关注连接查询时的 filtered 值**，它决定了**被驱动表要执行的次数**。
 
@@ -384,7 +384,7 @@ EXPLAIN SELECT * FROM s1 INNER JOIN s2 ON s1.id = s2.id;
 
   结果如下。在标明驱动表 s1 提供给被驱动表的记录数是 9895 条，其中 989.5 条满足过滤条件s1.key1 = s2.key1，那么被驱动表需要执行 990 次查询。
 
-  ![](D:\mine\study\mysql\pic\79.png)
+  ![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/79.png)
 
   > filtered=(最终查询结果/rows列数据)*100%，越大表示过滤后的数据，越是最终结果。
   > 相比较filtered越小，减少了数据再次过滤的性能
@@ -458,7 +458,7 @@ EXPLAIN SELECT key1 FROM s1 WHERE key1 = 'a';
 EXPLAIN SELECT * FROM s1 WHERE key1 > 'z' AND key1 LIKE '%a';
 ```
 
-![](D:\mine\study\mysql\pic\80.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/80.png)
 
 上面这种情况可以使用 **索引下推** (可以通过配置项进行配置)，**使用 WHERE key1 > ‘z’ 得到的结果先进行模糊匹配 key1 LIKE ‘%a’，然后再去回表**，就可以减少回表的次数了。
 
@@ -470,7 +470,7 @@ EXPLAIN SELECT * FROM s1 WHERE key1 > 'z' AND key1 LIKE '%a';
 EXPLAIN SELECT * FROM s1 INNER JOIN s2 ON s1.common_field = s2.common_field;
 ```
 
-![](D:\mine\study\mysql\pic\81.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/81.png)
 
 #### - Not exists
 
@@ -492,7 +492,7 @@ EXPLAIN SELECT * FROM s1 LEFT JOIN s2 ON s1.key1 = s2.key1 WHERE s2.id IS NULL;
 EXPLAIN SELECT * FROM s1 WHERE key1 = 'a' OR key3 = 'a';
 ```
 
-![](D:\mine\study\mysql\pic\82.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/82.png)
 
 #### - Zero limit
 
