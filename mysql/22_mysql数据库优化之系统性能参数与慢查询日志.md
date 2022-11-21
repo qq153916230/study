@@ -10,14 +10,14 @@
 
 整个流程划分成了 **观察（Show status）** 和 **行动（Action）** 两个部分。字母 S 的部分代表观察（会使用相应的分析工具），字母 A 代表的部分是行动（对应分析可以采取的行动）
 
-![](D:\mine\study\mysql\pic\59.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/59.png)
 
 我们可以通过观察了解数据库整体的运行状态,通过性能分析工具可以让我们了解执行慢的SQL都有哪些，查看具体的SQL执行计划，甚至是SQL执行中的每一步的成本代价， 这样才能定位问题所在，找到了问题，再采取相应的行动。
 
 如果我们发现执行SQL时存在不规则延迟或卡顿的时候，就可以采用分析工具帮我们定位有问题的SQL，这三种分析工具你可以理解是SQL调优的三个步骤：**慢查询**、**EXPLAIN** 和**SHOW**
 **PROFILING**。
 
-![](D:\mine\study\mysql\pic\60.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/60.png)
 
 可以看到数据库调优的步骤中越往金字塔尖走，其成本越高，效果越差，因此我们在数据库调优的过程中，要重点把握金字塔底部的 sql 及索引调优，数据库表结构调优，系统配置参数调优等软件层面的调优
 
@@ -129,7 +129,7 @@ SHOW VARIABLES LIKE '%slow%';
 
 通过 `mysqldumpslow --help` 可以查看慢查询日志命令帮助
 
-![](D:\mine\study\mysql\pic\61.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/61.png)
 
 - -a: 不将数字抽象成N，字符串抽象成S
 - -s: 是表示按照何种方式排序：
@@ -146,7 +146,7 @@ SHOW VARIABLES LIKE '%slow%';
 
 接下来我们可以找到慢查询日志的位置
 
-![](D:\mine\study\mysql\pic\62.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/62.png)
 
 按照查询时间排序，查看前五条 SQL 语句：
 
