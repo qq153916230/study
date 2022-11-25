@@ -1,3 +1,9 @@
+> 参考来源：
+>
+> 康师傅：https://www.bilibili.com/video/BV1iq4y1u7vj?p=145
+>
+> 爱编程的大李子：https://blog.csdn.net/LXYDSF/article/details/126606855
+
 # 一、子查询优化
 
 MySQL 从 4.1 版本开始支持子查询，使用子查询可以进行 SELECT 语句的嵌套查询，即一个 SELECT 查询的结果作为另一个 SELECT 语句的条件。子查询可以一次性完成很多逻辑上需要多个步骤才能完成的操作 。
