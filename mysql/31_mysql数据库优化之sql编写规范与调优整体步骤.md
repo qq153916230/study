@@ -234,9 +234,9 @@ SQL 查询时需要对不同的数据表进行查询，因此在物理查询优�
 
    如果读和写的业务量都很大，并且它们都在同一个数据库服务器中进行操作，那么数据库的性能就会出现瓶颈这时为了提升系统的性能，优化用户体验，我们可以采用**读写分离**的方式降低主数据库的负载，比如用主数据库(master）完成写操作，用从数据库(slave）完成读操作。
 
-   ![](D:\mine\study\mysql\pic\102.png)
+   ![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/102.png)
 
-   ![](D:\mine\study\mysql\pic\103.png)
+   ![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/103.png)
 
    
 
@@ -244,9 +244,9 @@ SQL 查询时需要对不同的数据表进行查询，因此在物理查询优�
 
    对**数据库分库分表**。当数据量级达到千万级以上时，有时候我们需要把一个数据库切成多份，放到不同的数据库服务器上，减少对单一数据库服务器的访问压力。如果你使用的是 MySQL，就可以使用 MySQL 自带的分区表功能，当然你也可以考虑自己做**垂直拆分（分库）、水平拆分(分表)、垂直+水平拆分(分库分表)**。
 
-   ![](D:\mine\study\mysql\pic\104.png)
+   ![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/104.png)
 
-   ![](D:\mine\study\mysql\pic\105.png)
+   ![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/105.png)
 
    
 
@@ -298,7 +298,7 @@ MySQL 服务的配置参数都在 **my.cnf** 或者 **my.ini** 文件的 [mysqld
     show status like '%Qcache%';
     ```
 
-    ![](D:\mine\study\mysql\pic\106.png)
+    ![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/106.png)
 
     
 
@@ -638,7 +638,7 @@ ANALYZE TABLE 分析后的统计结果会反应到 cardinality 的值，该值�
 show idex from user;
 ```
 
-![](D:\mine\study\mysql\pic\107.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/107.png)
 
 可以看到 name 字段的 cardinality 值仅为2，id 字段的 cardinality 值为 0，和表中总行数差距甚远。下面使用 ANALYZE TABLE 来分析 user 表执行的语句及结果如下：
 
@@ -661,7 +661,7 @@ mysql> analyze table user;
 
 此时再次查看user表的cardinality，如下所示：
 
-![](D:\mine\study\mysql\pic\108.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/108.png)
 
 可以看到 id 主键的 cardinality 已经修正，和数据总量一致，此时索引已经修复，查询效率大大提高。这个值只要大致相同就表示索引被优化器使用的概率就越大;但是 name 的 cardinality 值依然不变。
 
@@ -673,7 +673,7 @@ explain select * from user where name= "atguigu";
 
 结果如下所示：
 
-![](D:\mine\study\mysql\pic\109.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/109.png)
 
 可以看到虽然 name 字段上面有索引，但是执行计划中显示 type 为 “ALL” ，表示并没有使用到索引。
 
@@ -754,7 +754,7 @@ https://dev.mysql.com/doc/refman/8.0/en/optimize-table.html
 4.使用 OPTIMIZE table 表名; 命令优化表
 5.再查看当前数据文件的大小，会发现此时大小已经变化了、做了空间的回收
 
-![](D:\mine\study\mysql\pic\110.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/110.png)
 
 
 
@@ -804,9 +804,9 @@ mysqlcheck -o --all-databases -u root -p******
 
 经典的数据库拆分方案，主库负责写，从库负责读。
 
-![](D:\mine\study\mysql\pic\102.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/102.png)
 
-![](D:\mine\study\mysql\pic\103.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/103.png)
 
 
 
@@ -814,12 +814,12 @@ mysqlcheck -o --all-databases -u root -p******
 
 当数据量级达到**千万级**以上时，有时候我们需要把一个数据库切成多份，放到不同的数据库服务器上，减少对单—数据库服务器的访问压力。
 
-![](D:\mine\study\mysql\pic\104.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/104.png)
 
 - 如果数据库中的数据表过多，可以采用垂直分库的方式，将关联的数据表部署在同一个数据库上。
 - 如果数据表中的列过多，可以采用垂直分表的方式，将一张数据表分拆成多张数据表，把经常一起使用的列放到同一张表里。
 
-![](D:\mine\study\mysql\pic\111.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/111.png)
 
 **垂直拆分的优点**：可以使得列数据变小，在查询时减少读取的 Block 数，减少 I/O 次数。此外，垂直分区可以简化表的结构，易于维护。
 **垂直拆分的缺点**：主键会出现冗余，需要管理冗余列，并会引起 JOIN 操作。此外，垂直拆分会让事务变得更加复杂。
@@ -830,7 +830,7 @@ mysqlcheck -o --all-databases -u root -p******
 - 这里我们主要考虑业务数据的水平分表策略。将大的数据表按照**某个属性维度**分拆成不同的小表，每张小表保持相同的表结构。比如你可以按照年份来划分，把不同年份的数据放到不同的数据表中。2017年、2018年和2019年的数据就可以分别放到三张数据表中。
 - 水平分表仅是解决了单一表数据过大的问题，但由于表的数据还是在同一台机器上，其实对于提升 MySQL 并发能力没有什么意义，所以水平拆分最好分库，从而达到分布式的目的。
 
-![](D:\mine\study\mysql\pic\105.png)
+![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/105.png)
 
 水平拆分能够支持非常大的数据量存储，应用端改造也少，但**分片事务难以解决，跨节点 Join 性能较差，逻辑复杂**。《Java工程师修炼之道》的作者推荐**尽量不要对数据进行分片，因为拆分会带来逻辑、部署、运维的各种复杂度**，一般的数据表在优化得当的情况下支撑千万以下的数据量是没有太大问题的。如果实在要分片，尽量选择**客户端分片架构**，这样可以减少一次和中间件的网络 l/O。
 
