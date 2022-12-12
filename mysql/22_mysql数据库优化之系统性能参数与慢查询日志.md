@@ -14,8 +14,7 @@
 
 我们可以通过观察了解数据库整体的运行状态,通过性能分析工具可以让我们了解执行慢的SQL都有哪些，查看具体的SQL执行计划，甚至是SQL执行中的每一步的成本代价， 这样才能定位问题所在，找到了问题，再采取相应的行动。
 
-如果我们发现执行SQL时存在不规则延迟或卡顿的时候，就可以采用分析工具帮我们定位有问题的SQL，这三种分析工具你可以理解是SQL调优的三个步骤：**慢查询**、**EXPLAIN** 和**SHOW**
-**PROFILING**。
+如果我们发现执行SQL时存在不规则延迟或卡顿的时候，就可以采用分析工具帮我们定位有问题的SQL，这三种分析工具你可以理解是SQL调优的三个步骤：**慢查询**、**EXPLAIN** 和 **SHOW PROFILING**。
 
 ![](https://raw.githubusercontent.com/qq153916230/study/main/mysql/pic/60.png)
 
@@ -26,7 +25,7 @@
 可以使用 **SHOW STATUS** 语句查询一些数据库服务器的**性能参数和使用频率**。其语法如下：
 
 ```mysql
-SHOW [GLOBAL][SESSION] STATUES LIKE '参数';
+SHOW [GLOBAL][SESSION] STATUS LIKE '参数';
 ```
 
 一些常用的性能参数如下：
